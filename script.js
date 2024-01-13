@@ -1,11 +1,11 @@
 
 var images = [
-        'url("pic1.jpg")',
-        'url("pic2.jpg")',
-        'url("pic3.jpg")',
-        'url("pic4.jpg")',
-        'url("pic5.jpg")',
-        'url("pic6.jpg")',
+        'url("/images/pic1.jpg")',
+        'url("/images/pic2.jpg")',
+        'url("/images/pic3.jpg")',
+        'url("/images/pic4.jpg")',
+        'url("/images/pic5.jpg")',
+        'url("/images/pic6.jpg")',
     ]
     function changeBackground(){
     const bg= images[Math.floor(Math.random()*images.length)];

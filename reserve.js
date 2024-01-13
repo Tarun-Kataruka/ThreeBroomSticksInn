@@ -9,7 +9,7 @@ document.getElementById('reserveBtn').addEventListener('click',function(e){
     }
 });
 
-document.getElementById('form').addEventListener('submit',function(event){
+document.getElementById('reservationForm').addEventListener('submit',function(event){
     event.preventDefault();
     alert('Reservation submitted!');
 });

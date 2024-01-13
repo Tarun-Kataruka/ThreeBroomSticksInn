@@ -1,9 +1,9 @@
-document.getElementById("break").addEventListener("click",function(){
-    window.open("breakfast.html","_blank");
+document.getElementById("veg").addEventListener("click",function(){
+    window.open("vegmenu.html","_blank");
 });
-document.getElementById("lun").addEventListener("click",function(){
-    window.open("lunch.html","_blank");
+document.getElementById("drinks").addEventListener("click",function(){
+    window.open("drinksmenu.html","_blank");
 });
-document.getElementById("din").addEventListener("click",function(){
-    window.open("dinner.html","_blank");
+document.getElementById("desserts").addEventListener("click",function(){
+    window.open("dessertsmenu.html","_blank");
 });
