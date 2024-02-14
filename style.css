@@ -70,7 +70,7 @@ header{
 .reservation-form{
     align-content: center;
     max-width: 400px;
-    margin: 120px auto;
+    margin: 80px auto;
     padding: 20px;
     border: 1px solid black;
     background-color: rgba(0, 0, 0, 0.5);
@@ -80,6 +80,16 @@ header{
 .reservation-form h2{
     margin-bottom: 20px;
     color: beige;
+}
+.reserve-head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    font-size: 50px;
+    color: #918450;
+    -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
 }
 label{
     display: block;
@@ -158,6 +168,8 @@ footer{
 .card:hover{
     background-color: rgb(100,110,120);
 }
+
+
 .grid-container {
     display: grid;
     grid-template-columns: 0.5fr 0.5fr 3fr;
@@ -166,7 +178,6 @@ footer{
     height: 100vh;
     background-color: #f2b5d4;
   }
-  
   .box {
     background-color: #f0f0f0;
     text-align: center;
@@ -174,7 +185,10 @@ footer{
     font-family: 'Merienda';
     font-weight: bolder;
   }
-  
+  .box:hover{
+    box-shadow: 6px 6px 8px 6px rgba(0, 0, 0, 0.5);
+    
+}
   .box1 {
     grid-column: span 2;
     background-image:url("/images/donuts.jpg") ;
@@ -208,81 +222,8 @@ footer{
      background-color:#fcf6bd; 
      height: 280px;
 }
-.g-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows:1fr 1fr 1fr 1fr;
-    gap: 10px;
-    height: 100vh;
-    background-image: url("/images/vegbackground.avif");
-    background-size: cover;
-}
-.vegbox1{
-    grid-column: span 1;
-    background-image: url("/images/noodles.png");
-    background-size: cover;
-}
-.vegbox2{
-    background: none;
-}
-.vegbox5{
-    grid-column: span 1;
-    background-image: url("/images/burger.jpeg");
-    background-size: cover;
-}
-.vegbox9{
-    background-image: url("/images/rice.jpg");
-    background-size: cover;
-}
-.vegbox6{
-    grid-row: span 2;
-    background: none;
-} 
-.vegbox7{
-    grid-row: span 2;
-    background: none;
-}
-.vegbox8{
-    grid-row: span 2;
-    background: none;
-}
-.vegbox4{
-    grid-row: span 3;
-    background: none;
-}
-.veghead{
-    background-color:#fff3b0;
-}
-.burger-content ul{
-    font-size: 42px;
-    list-style-type: none;
-    color: white;
-}
-.vegbox2 h3{
-    color:#fff3b0 ;
-}
-.vegbox2 h4{
-    color: #f0f0f0;
-    font-style: oblique;
-    
-}
-.noodles-content ul{
-    font-size: 25px;
-    margin-top: 4px;
-    list-style-type: none;
-    color: white;
-}
-.vegbox3{
-    background-image: url("/images/pizza.jpeg");
-    background-size: contain;
-}
-.vegbox10{
-    background-image: url("/images/thali.webp");
-    background-size: cover;
-}
-.vegbox11{
-    background: none;
-}
+
+
 .contain{
     display: grid;
     gap: 10px;
@@ -368,14 +309,14 @@ footer{
     background-size: cover;
 }
 .col3name{
-    margin-top: 30px;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .col3name h3{
-    font-size: 50px;
+    font-size: 35px;
     font-family: cursive;
     color: #E7F2F8;
     text-align: center;
@@ -384,8 +325,71 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
     color: #E7F2F8;
-    font-size: 25px;
+    font-size: 20px;
+}
+.review-form{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#reviewform{
+    max-width: 400px;
+    margin: auto;
+}
+.reviewlabel{
+    display: block;
+    margin-bottom: 8px;
+}
+textarea{
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+    background-color: #e9d8a6;
+}
+
+
+
+.menu-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dish-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.dish-details {
+    padding: 15px;
+}
+
+.dish-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.dish-price {
+    color: #4CAF50;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
 }
 

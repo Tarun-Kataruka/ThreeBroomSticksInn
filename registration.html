@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="back">
+    <header>
+        <nav>
+            <ul< class="menu">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/menu.html" id="#menubtn">Menu</a></li>
+                <li><a href="/registration.html" id="#reserveBtn">Reserve</a></li>
+                <li><a href="/aboutus.html">About Us</a></li>
+            </nav>
+    </header>
+    <div class="reserve" id="#reservation">
+        <h1 class="reserve-head" id="#reservehead">WELCOME TO THE THREE BROOMSTICKS INN</h1>
+    </div>
+    
 <div class="reservation-form" id="reservationForm">
     <h2>Reservation Form</h2>
     <form id="form">
@@ -22,10 +36,13 @@
         <input type="text" id="contact" name="contact" required><br><br>
     <label for="person">People:</label>
     <input type="number" id="number" name="number" required><br><br>
-    <input type="submit" value="Submit">
+    <div>
+        <button onclick="BookTable()" class="bg-orange-600 w-full text-3xl text-white font-bold p-2 rounded-md">Book Table</button>
+    </div>
     </form>
 </div>
 </html>
 <script src="reserve.js"></script>
+
 </body>
 </html>

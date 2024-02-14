@@ -3,134 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VEG</title>
+    <title>Restaurant Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    </head>
+    
+</head>
 <body>
-    <div class="g-container">
-    <div class="box vegbox1"></div>
-    <div class="box vegbox2">
-      <h4>Delicious</h4>
-      <h3>FOOD</h3>
-      <h3>MENU</h3>
-    </div>
-    <div class="box vegbox3"></div>
-    <div class="box vegbox4">
-      <div class="veghead">
-        <h4>Main Course</h4>
-        </div>
-        <div class="noodles-content">
-          <ul>
-            <li>Paneer Butter Masala</li>
-            <li>Paneer Mushroom</li>
-            <li>Paneer Tikka Masala</li>
-            <li>Dum Aloo</li>
-            <li>Kaju Masala</li>
-            <li>Mix Veg</li>
-            <li>Veg Kolapuri</li>
-            <li>Matar Paneer</li>
-            <li>Dal Makhni</li>
-          </ul>
-        </div>
-        <div class="veghead">
-          <h4>Breads</h4>
-        </div>
-        <div class="noodles-content">
-          <ul>
-            <li>Butter Naan</li>
-            <li>Kulcha</li>
-            <li>Tandoori Roti</li>
-            <li>Paratha</li>
-            <li>Lachcha Paratha</li>
-          </ul>
-        </div>
-    </div>
-    <div class="box vegbox5"></div>
-    <div class="box vegbox6">
-      <div class="veghead">
-        <h4>NOODLES</h4>
-      </div>
-      <div class="noodles-content">
-        <ul>
-          <li>Veg Noodles</li>
-          <li>Hakka Noodles</li>
-          <li>Szechwan Noodles</li>
-        </ul>
-      </div>
-      <div class="veghead">
-        <h4>RICE</h4>
-      </div>
-      <div class="noodles-content">
-        <ul>
-          <li>Fried Rice</li>
-          <li>Jeera Rice</li>
-          <li>Lemon Rice</li>
-          <li>Hyderabadi Biryani</li>
-          <li>Paneer Biryani</li>
-        </ul>
-      </div>
-    </div>
-    <div class="box vegbox7">
-      <div class="veghead">
-        <h4>PIZZA</h4>
-      </div>
-      <div class="noodles-content">
-        <ul>
-          <li>Margherita</li>
-          <li>Farmhouse</li>
-          <li>Spring Fills</li>
-          <li>Peppy Paneer</li>
-          <li>Golden Corn</li>
-        </ul>
-      </div>
-      <div class="veghead">
-        <h4>PASTA</h4>
-      </div>
-      <div class="noodles-content">
-        <ul>
-          <li>Aglio Olio</li>
-          <li>Arrabiata Sauce</li>
-          <li>Neapoliton Sauce</li>
-        </ul>
-      </div>
-    </div>
-    <div class="box vegbox8">
-      <div class="veghead">
-        <h3>BURGERS</h3>
-      </div>
-      <div class="burger-content">
-        <ul>
-          <li>Cheese Burger</li>
-          <li>Double Crispy</li>
-          <li>Veg Whopper</li>
-          <li>Paneer Royale</li>
-          <li>Crispy Veg burger</li>
-          <li>BK Veggie</li>
-        </ul>
-      </div>
-    </div>
-    <div class="box vegbox9">
-      <div class="pizza">
-        <ul>
-          <li></li>
-        </ul>
-      </div>
-    </div>
-    <div class="box vegbox10"></div>
-    <div class="box vegbox11">
-      <div class="box vegbox8">
-        <div class="veghead">
-          <h3>SPECIALS</h3>
-        </div>
-        <div class="noodles-content">
-          <ul>
-            <li>Soups</li>
-            <li>Chole Bhature</li>
-            <li>Veg Thali</li>
-          </ul>
+  <header>
+    <nav>
+        <ul< class="menu">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/menu.html" id="#menubtn">Menu</a></li>
+            <li><a href="/registration.html" id="#reserveBtn">Reserve</a></li>
+            <li><a href="/aboutus.html">About Us</a></li>
+        </nav>
+</header>
+<div class="veg-menu-body" style="background-color:black">
+<h1 align="center" style="color: darkorange;">Restaurant Menu</h1>
+<div class="row">
+    <div class="col-sm-3">
+      <div class="menu-card">
+        <div class="card-body">
+            <img class="dish-image" src="/images/download.jpeg" alt="Burger Image">
+            <div class="dish-details">
+            <div class="dish-name" style="color: white;">Burger</div>
+            <div class="dish-price">₹125</div>
+            <button class="add-to-cart" onclick="addToCart('Burger')">Add to Cart</button>
         </div>
       </div>
     </div>
     </div>
-   </body>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/pizza.jpeg" alt="Pizza Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Pizza</div>
+              <div class="dish-price">₹320</div>
+              <button class="add-to-cart" onclick="addToCart('Pizza')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/pasta.jpeg" alt="Pasta Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Pasta</div>
+              <div class="dish-price">₹275</div>
+              <button class="add-to-cart" onclick="addToCart('Pasta')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/noodles.jpeg" alt="Noodles Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Noodles</div>
+              <div class="dish-price">₹220</div>
+              <button class="add-to-cart" onclick="addToCart('Noodles')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/biryani.jpeg" alt="Biryani Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Biryani</div>
+              <div class="dish-price">₹425</div>
+              <button class="add-to-cart" onclick="addToCart('Biryani')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/manchurian.jpeg" alt="Manchurian Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Gobi Manchurian</div>
+              <div class="dish-price">₹200</div>
+              <button class="add-to-cart" onclick="addToCart('Gobi Manchurian')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/chicken.jpeg" alt="Chicken Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Chicken Lolipop</div>
+              <div class="dish-price">₹275</div>
+              <button class="add-to-cart" onclick="addToCart('Chicken Lolipop')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/chole.jpeg" alt="Chole-Bhature Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Chole Bhature</div>
+              <div class="dish-price">₹150</div>
+              <button class="add-to-cart" onclick="addToCart('Chole Bhature')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/paneer.jpeg" alt="Paneer Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Paneer Butter Masala</div>
+              <div class="dish-price">₹190</div>
+              <button class="add-to-cart" onclick="addToCart('Paneer Butter Masala')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/dal.jpeg" alt="Dal Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Dal Makhani</div>
+              <div class="dish-price">₹175</div>
+              <button class="add-to-cart" onclick="addToCart('Dal Makhani')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/naan.jpeg" alt="Naan Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Butter Naan</div>
+              <div class="dish-price">₹55</div>
+              <button class="add-to-cart" onclick="addToCart('Butter Naan')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+        <div class="menu-card">
+          <div class="card-body">
+              <img class="dish-image" src="/images/thali.jpeg" alt="Thali Image">
+              <div class="dish-details">
+              <div class="dish-name" style="color: white;">Veg Thali</div>
+              <div class="dish-price">₹375</div>
+              <button class="add-to-cart" onclick="addToCart('Veg Thali')">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<script>
+    function addToCart(itemName) {
+        alert(itemName + " added to cart!");
+    }
+</script>
+
+</body>
 </html>

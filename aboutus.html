@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <nav>
+        <ul< class="menu">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/menu.html" id="#menubtn">Menu</a></li>
+            <li><a href="/registration.html" id="#reserveBtn">Reserve</a></li>
+            <li><a href="/aboutus.html">About Us</a></li>
+        </nav>
+</header>
     <div class="contain">
         <div class="column1">
             <div class="colhead">
@@ -52,7 +61,7 @@
         </div>
         <div class="column3">
           <div class="photo">
-            <img class="aboutphoto" src="/images/last1.jpg">
+            <img class="aboutphoto" src="/images/last1.jpeg">
             </div>
           <div class="col3name">
           <h3>The Three <br> Broomsticks <br> Inn</h3>
@@ -60,6 +69,16 @@
           <div class="subhead">
             <h4>~A Feast for the Senses, A Treat for the Soul.</h4>
           </div>
+          <div class="review-form" id="reviewForm">
+            <h2 class="review-heading">Leave a Comment</h2>
+            </div>
+            <form id="reviewform">
+                <label for="comment" class="reviewlabel"></label>
+                <textarea id="review" name="review"></textarea>
+                <button type="submit" value="Submit" class="submit-btn">Submit</button>
+            </form>
+        
     </div>
+    <script src="feedback.js"></script>
 </body>
 </html>
