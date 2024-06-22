@@ -19,7 +19,7 @@ The project covers the entire restaurant workflow, from viewing menu and booking
 
   ## Deployment
 
-The live deployment of FindYourKick can be accessed at [FindYourKick](https://.vercel.app/).
+The live deployment of FindYourKick can be accessed at [FindYourKick](https://three-broomsticks.vercel.app/).
 
 ## Project Structure
 The project is organized into three main folders:
