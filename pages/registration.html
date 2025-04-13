@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservation</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="../style.css">
 </head>
+
 <body id="back">
     <header>
         <nav>
-            <ul< class="menu">
+            <ul class="menu">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="menu.html" id="#menubtn">Menu</a></li>
-                <li><a href="registration.html" id="#reserveBtn">Reserve</a></li>
+                <li><a href="menu.html" id="menubtn">Menu</a></li>
+                <li><a href="registration.html" id="reserveBtn">Reserve</a></li>
                 <li><a href="aboutus.html">About Us</a></li>
-            </nav>
+            </ul>
+        </nav>
     </header>
-    <div class="reserve" id="#reservation">
-        <h1 class="reserve-head" id="#reservehead">WELCOME TO THE THREE BROOMSTICKS INN</h1>
-    </div>
-    
-<div class="reservation-form" id="reservationForm">
-    <h2>Reservation Form</h2>
-    <form id="form">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br><br>
-        <label for="time">Time:</label>
-        <input type="time" id="time" name="time" required><br><br>
-        <label for="contact">Contact Number:</label>
-        <input type="text" id="contact" name="contact" required><br><br>
-    <label for="person">People:</label>
-    <input type="number" id="number" name="number" required><br><br>
-    <div>
-        <button onclick="BookTable()" class="bg-orange-600 w-full text-3xl text-white font-bold p-2 rounded-md">Book Table</button>
-    </div>
-    </form>
-</div>
-</html>
-<script src="../js/reserve.js"></script>
 
+    <div class="reserve" id="reservation">
+        <h1 class="reserve-head" id="reservehead">WELCOME TO THE THREE BROOMSTICKS INN</h1>
+    </div>
+
+    <div class="reservation-form" id="reservationForm">
+        <h2>Reservation Form</h2>
+        <form id="form" action="#" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" required><br><br>
+
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" name="contact" required><br><br>
+
+            <label for="people">People:</label>
+            <input type="number" id="people" name="people" required><br><br>
+
+            <button type="submit" class="bg-orange-600 w-full text-3xl text-white font-bold p-2 rounded-md">Book Table</button>
+        </form>
+    </div>
+
+    <script src="../js/reserve.js"></script>
 </body>
+
 </html>
