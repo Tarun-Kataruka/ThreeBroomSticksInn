@@ -8,17 +8,24 @@ on:
 jobs:
   validate:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Validate HTML
-        uses: Cyb3r-Jak3/html5validator-action@v0.3.0
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          directory: '.'
+          python-version: '3.x'
+
+      - name: Install HTML5 Validator
+        run: pip install html5validator
+
+      - name: Validate HTML
+        run: html5validator --root . --show-warnings
+
+      - name: Install CSSLint
+        run: npm install -g csslint
 
       - name: Validate CSS
-        run: |
-          curl -O https://raw.githubusercontent.com/CSSLint/csslint/master/build/csslint.js
-          npm install -g csslint
-          csslint **/*.css || true
+        run: csslint **/*.css || true
