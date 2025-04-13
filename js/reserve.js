@@ -13,8 +13,8 @@ function BookTable()
 {
     var name =document.getElementById('name').value;
     var email =document.getElementById('email').value;
-    var date =document.getElementById('reservationDate').value;
-    var time =document.getElementById('reservationTime"').value;
+    // var date =document.getElementById('reservationDate').value;
+    // var time =document.getElementById('reservationTime"').value;
     var people =document.getElementById('number').value;
     var contact =document.getElementById('contact').value;
 
@@ -23,8 +23,8 @@ var mailtoUrl = 'mailto:tarunkataruka22@outlook.com'
 + '&body=' + encodeURIComponent (
         'NAME:' + name + '\n'+
         'EMAIL:' + email + '\n'+
-        'DATE:' + date + '\n'+
-        'TIME:' + time + '\n'+
+        // 'DATE:' + date + '\n'+
+        // 'TIME:' + time + '\n'+
         'GUESTS:' + people + '\n'+
         'CONTACT NUMBER:' + contact
 );
