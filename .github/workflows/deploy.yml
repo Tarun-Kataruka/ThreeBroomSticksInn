@@ -1,45 +1,68 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Validate and Deploy
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment, skipping queued runs between the one in-progress and the latest
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+    branches: [main]  # or your deploy branch
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  validate:
+    name: Code Validation
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload site files
-        uses: actions/upload-pages-artifact@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          path: '.' # Change this to 'dist' or 'docs' if your build output is in another folder
+          node-version: '18'  # or your version
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Linter
+        run: npm run lint  # or your validation command
+
+      - name: Run Tests
+        run: npm test  # optional but good practice
+
+      - name: Set up Python for HTML and CSS Validation
+        uses: actions/setup-python@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          python-version: '3.x'
+
+      - name: Install HTML5 Validator
+        run: pip install html5validator
+
+      - name: Validate HTML
+        run: html5validator --root . --show-warnings
+
+      - name: Install CSSLint
+        run: npm install -g csslint
+
+      - name: Validate CSS
+        run: csslint **/*.css || true
+
+  deploy:
+    name: Deploy Project
+    needs: validate  # Ensures deploy only runs after validate succeeds
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to Server
+        run: ./deploy.sh  # or whatever your deploy step is
