@@ -13,8 +13,8 @@ function BookTable()
 {
     var name =document.getElementById('name').value;
     var email =document.getElementById('email').value;
-    var date =document.getElementById('date').value;
-    var time =document.getElementById('time').value;
+    var date =document.getElementById('reservationDate').value;
+    var time =document.getElementById('reservationTime"').value;
     var people =document.getElementById('number').value;
     var contact =document.getElementById('contact').value;
 
