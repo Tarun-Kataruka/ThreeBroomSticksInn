@@ -19,7 +19,7 @@ The project covers the entire restaurant workflow, from viewing menu and booking
 
   ## Deployment
 
-The live deployment of FindYourKick can be accessed at [ThreeBroomSticksInn](https://three-broomsticks.vercel.app/).
+The live deployment of TheThreeBroomSticksInn can be accessed at [ThreeBroomSticksInn](https://three-broomsticks.vercel.app/).
 
 
   ## Tech Stack
