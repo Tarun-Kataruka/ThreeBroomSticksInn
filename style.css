@@ -29,12 +29,12 @@ header{
     animation: changeBackground 15s infinite;
 }
 @keyframes changeBackground {
-    0%{background-image: url('/images/pic1.jpg');}
-    20%{background-image: url('/images/pic2.jpg');}
-    40%{background-image: url('/images/pic3.jpg');}
-    60%{background-image: url('/images/pic4.jpg');}
-    80%{background-image: url('/images/pic5.jpg');}
-    100%{background-image: url('/images/pic6.jpg');}
+    0%{background-image: url('images/pic1.jpg');}
+    20%{background-image: url('images/pic2.jpg');}
+    40%{background-image: url('images/pic3.jpg');}
+    60%{background-image: url('images/pic4.jpg');}
+    80%{background-image: url('images/pic5.jpg');}
+    100%{background-image: url('images/pic6.jpg');}
 }
 #heading{
     font-size: 8vw;
@@ -97,7 +97,7 @@ label{
     color: beige;
 }
 #back{
-    background-image: url('/images/pic8.webp');
+    background-image: url('images/pic8.webp');
     background-size: cover;
 }
 
@@ -117,7 +117,7 @@ label{
     background-color: #ddd;
 }
 .menu-container{
-    background-image: url("/images/pic10.jpg"); 
+    background-image: url("images/pic10.jpg"); 
     background-size: cover;
     display:flex;
 }
@@ -162,7 +162,7 @@ footer{
     text-decoration: underline;
 }
 .drinksbody{
-    background-image: url("/images/backd.avif");
+    background-image: url("images/backd.avif");
     background-size: cover;
 }
 .card:hover{
@@ -191,20 +191,20 @@ footer{
 }
   .box1 {
     grid-column: span 2;
-    background-image:url("/images/donuts.jpg") ;
+    background-image:url("images/donuts.jpg") ;
     background-size: cover;
   }
   
   .box2 {
     grid-column: span 2;
     order:1;
-    background-image: url("/images/cakes.jpg");
+    background-image: url("images/cakes.jpg");
     background-size: cover;
   }
   .box3 {
     grid-column: span 2;
     order:2;
-    background-image: url("/images/brwonie.jpeg");
+    background-image: url("images/brwonie.jpeg");
     background-size: cover;
   }
   .box4{
