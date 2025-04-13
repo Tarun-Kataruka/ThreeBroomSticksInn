@@ -7,6 +7,9 @@
     <title>Reservation</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="../style.css">
+    
+    <!-- Polyfill for date and time input types -->
+    <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=input[type=date],input[type=time]"></script>
 </head>
 
 <body id="back">
@@ -35,10 +38,16 @@
             <input type="email" id="email" name="email" required><br><br>
 
             <label for="date">Date:</label>
-            <input type="date" id="date" name="date" required><br><br>
+            <input type="date" id="date" name="date" required>
+            <noscript>
+                <input type="text" id="date" name="date" placeholder="YYYY-MM-DD">
+            </noscript><br><br>
 
             <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required><br><br>
+            <input type="time" id="time" name="time" required>
+            <noscript>
+                <input type="text" id="time" name="time" placeholder="HH:MM">
+            </noscript><br><br>
 
             <label for="contact">Contact Number:</label>
             <input type="tel" id="contact" name="contact" required><br><br>
