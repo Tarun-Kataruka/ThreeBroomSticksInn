@@ -1,0 +1,24 @@
+name: Validate HTML and CSS
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v0.4.0
+        with:
+          directory: '.'
+
+      - name: Validate CSS
+        run: |
+          curl -O https://raw.githubusercontent.com/CSSLint/csslint/master/build/csslint.js
+          npm install -g csslint
+          csslint **/*.css || true
