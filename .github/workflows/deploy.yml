@@ -2,7 +2,7 @@ name: Validate and Deploy
 
 on:
   push:
-    branches: [main]  # or your deploy branch
+    branches: [master]  # or your deploy branch
 
 jobs:
   validate:
