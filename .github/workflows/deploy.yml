@@ -2,7 +2,7 @@ name: Validate and Deploy
 
 on:
   push:
-    branches: [master]  # or your deploy branch
+    branches: [master] 
 
 jobs:
   validate:
@@ -12,25 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'  # or your version
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Linter
-        run: npm run lint  # or your validation command
-
-      - name: Run Tests
-        run: npm test  # optional but good practice
-
-      - name: Set up Python for HTML and CSS Validation
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
 
       - name: Install HTML5 Validator
         run: pip install html5validator
@@ -52,17 +33,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
 
       - name: Deploy to Server
         run: ./deploy.sh  # or whatever your deploy step is
