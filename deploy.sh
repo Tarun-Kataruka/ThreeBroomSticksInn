@@ -22,9 +22,9 @@ docker build -t $IMAGE_NAME .
 echo "🏷️ Tagging Docker image..."
 docker tag $IMAGE_NAME $DOCKER_USERNAME/$IMAGE_NAME
 
-# Step 5: Login to DockerHub
+# Step 5: Login to DockerHub securely using password from environment variable
 echo "🔐 Logging into DockerHub..."
-docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
 # Step 6: Push Docker image to DockerHub
 echo "⬆️ Pushing Docker image to DockerHub..."
