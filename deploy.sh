@@ -24,10 +24,10 @@ docker tag $IMAGE_NAME $DOCKER_USERNAME/$IMAGE_NAME
 
 # Step 5: Login to DockerHub
 echo "🔐 Logging into DockerHub..."
-docker login
+docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
 
 # Step 6: Push Docker image to DockerHub
 echo "⬆️ Pushing Docker image to DockerHub..."
-docker push $tarun2210/$IMAGE_NAME
+docker push $DOCKER_USERNAME/$IMAGE_NAME
 
 echo "✅ Deployment completed successfully!"
