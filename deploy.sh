@@ -7,7 +7,7 @@ echo "🚀 Starting Docker deployment..."
 # DockerHub info
 DOCKER_USERNAME="${DOCKERHUB_USERNAME}"
 DOCKER_TOKEN="${DOCKERHUB_TOKEN}"
-IMAGE_NAME="tarun2210/my-image"
+IMAGE_NAME="tarun2210/threebroomsticks-inn"
 
 echo "🐳 Building Docker image..."
 docker build -t $IMAGE_NAME .

@@ -47,8 +47,8 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t tarun2210/my-image:${{ github.sha }} .
-          docker tag tarun2210/my-image:${{ github.sha }} tarun2210/my-image:latest
+          docker build -t tarun2210/threebroomsticks-inn:${{ github.sha }} .
+          docker tag tarun2210/threebroomsticks-inn:${{ github.sha }} tarun2210/threebroomsticks-inn:latest
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -58,8 +58,8 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push tarun2210/my-image:${{ github.sha }}
-          docker push tarun2210/my-image:latest
+          docker push tarun2210/threebroomsticks-inn:${{ github.sha }}
+          docker push tarun2210/threebroomsticks-inn:latest
 
   deploy:
     name: Deploy Project
