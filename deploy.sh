@@ -4,25 +4,30 @@
 set -e
 
 # Print some messages for debugging
-echo "Starting deployment..."
+echo "🚀 Starting Docker deployment..."
 
-# Step 1: Pull the latest changes from the repository
+# Step 1: Pull latest changes from the master branch
+echo "🔄 Pulling latest changes from GitHub..."
 git pull origin master
 
-# Step 2: Install dependencies (if needed)
-# This step is only required if you're using a package manager like npm
-# npm install
+# Step 2: Define DockerHub credentials
+DOCKER_USERNAME="tarun2210"
+IMAGE_NAME="threebroomsticks-inn"
 
-# Step 3: Build the app (if necessary)
-# This depends on your project type, e.g., for React:
-# npm run build
+# Step 3: Build the Docker image
+echo "🐳 Building Docker image..."
+docker build -t $IMAGE_NAME .
 
-# For a simple HTML project, you can skip the build step.
+# Step 4: Tag the Docker image
+echo "🏷️ Tagging Docker image..."
+docker tag $IMAGE_NAME $DOCKER_USERNAME/$IMAGE_NAME
 
-# Step 4: Deploy to your hosting environment (example: deploy to a server using SCP)
-# Example: Deploy to a remote server via SCP (replace with your server credentials)
-# scp -r ./build/* user@your-server:/path/to/your/project
+# Step 5: Login to DockerHub
+echo "🔐 Logging into DockerHub..."
+docker login
 
-# If you're using a platform like Netlify, Vercel, or others, the deployment may be automatic.
+# Step 6: Push Docker image to DockerHub
+echo "⬆️ Pushing Docker image to DockerHub..."
+docker push $tarun2210/$IMAGE_NAME
 
-echo "Deployment completed successfully!"
+echo "✅ Deployment completed successfully!"
