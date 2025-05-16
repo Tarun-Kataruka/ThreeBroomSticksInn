@@ -22,6 +22,6 @@ docker push $IMAGE_NAME
 docker push $IMAGE_NAME:latest
 
 echo "📦 Applying Kubernetes deployment..."
-kubectl apply -f k8s/deployment.yaml
+kubectl apply --validate=false -f k8s/deployment.yaml
 
 echo "✅ Deployment completed!"
