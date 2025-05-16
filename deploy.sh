@@ -21,6 +21,7 @@ echo "⬆️ Pushing Docker image to DockerHub..."
 docker push $IMAGE_NAME
 docker push $IMAGE_NAME:latest
 
+# added for Jenkins deployment
 echo "📦 Applying Kubernetes deployment..."
 kubectl apply --validate=false -f k8s/deployment.yaml
 
