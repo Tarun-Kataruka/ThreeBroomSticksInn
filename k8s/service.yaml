@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: inn-service
+  name: threebroomsticks-service
 spec:
-  type: LoadBalancer
   selector:
-    app: inn
+    app: threebroomsticks
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 3000  # Adjust based on your app
+  type: LoadBalancer  # Use NodePort if not on cloud (e.g. minikube)
