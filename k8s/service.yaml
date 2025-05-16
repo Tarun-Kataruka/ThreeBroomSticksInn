@@ -8,5 +8,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 3000  # Adjust based on your app
-  type: LoadBalancer  # Use NodePort if not on cloud (e.g. minikube)
+      targetPort: 80  
+  type: LoadBalancer  
