@@ -17,8 +17,8 @@ pipeline {
 
     stage('Validate Code') {
       steps {
-        withEnv(['PATH=/opt/homebrew/bin:$PATH']) {
-          sh '''
+        withEnv(['PATH+HOME=/opt/homebrew/bin']) {
+          sh '''#!/bin/bash
             pip install html5validator
             html5validator --root . --show-warnings
             npm install -g csslint
@@ -39,7 +39,7 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-          sh '''
+          sh '''#!/bin/bash
             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
             docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest
             docker push ${IMAGE_NAME}:${IMAGE_TAG}
@@ -52,7 +52,7 @@ pipeline {
     stage('Deploy to Kubernetes') {
       steps {
         withCredentials([file(credentialsId: KUBE_CONFIG_ID, variable: 'KUBECONFIG')]) {
-          sh '''
+          sh '''#!/bin/bash
             kubectl apply -f k8s/deployment.yaml
             kubectl apply -f k8s/service.yaml
           '''
