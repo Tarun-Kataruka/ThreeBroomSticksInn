@@ -16,12 +16,19 @@ pipeline {
     }
 
     stage('Validate Code') {
+      environment {
+        PATH = "/opt/homebrew/bin:$PATH"
+      }
       steps {
-        // Use sh with direct command rather than multiline script
-        sh 'export PATH="/opt/homebrew/bin:$PATH" && pip install html5validator'
-        sh 'export PATH="/opt/homebrew/bin:$PATH" && html5validator --root . --show-warnings || true'
-        sh 'export PATH="/opt/homebrew/bin:$PATH" && npm install -g csslint || true'
-        sh 'export PATH="/opt/homebrew/bin:$PATH" && find . -name "*.css" -exec csslint {} \\; || true'
+        sh '''#!/bin/bash
+          which pip3 || true
+          pip3 install html5validator || true
+          html5validator --root . --show-warnings || true
+
+          which npm || true
+          npm install -g csslint || true
+          find . -name '*.css' -exec csslint {} \\; || true
+        '''
       }
     }
 
@@ -36,11 +43,12 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-          // Break down complex multiline script into individual sh steps
-          sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
-          sh "docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest"
-          sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
-          sh "docker push ${IMAGE_NAME}:latest"
+          sh '''#!/bin/bash
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest
+            docker push ${IMAGE_NAME}:${IMAGE_TAG}
+            docker push ${IMAGE_NAME}:latest
+          '''
         }
       }
     }
@@ -48,8 +56,10 @@ pipeline {
     stage('Deploy to Kubernetes') {
       steps {
         withCredentials([file(credentialsId: "${KUBE_CONFIG_ID}", variable: 'KUBECONFIG')]) {
-          sh 'kubectl apply -f k8s/deployment.yaml'
-          sh 'kubectl apply -f k8s/service.yaml'
+          sh '''#!/bin/bash
+            kubectl apply -f k8s/deployment.yaml
+            kubectl apply -f k8s/service.yaml
+          '''
         }
       }
     }
