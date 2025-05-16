@@ -1,4 +1,6 @@
-pipeline {
+// jenkinsfile for a simple web application that validates HTML and CSS, builds a Docker image, pushes it to Docker Hub, and deploys it to a Kubernetes cluster.
+
+ pipeline {
   agent any
 
   environment {
