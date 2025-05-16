@@ -1,22 +1,59 @@
 pipeline {
-    agent any
+  agent any
 
-    environment {
-        DOCKERHUB_USERNAME = credentials('dockerhub-creds')
-        DOCKERHUB_TOKEN = credentials('dockerhub-creds')      
+  environment {
+    IMAGE_NAME = "tarun2210/threebroomsticks-inn"
+    IMAGE_TAG = "${env.BUILD_ID}"
+    DOCKER_CREDENTIALS_ID = "docker-creds"
+    KUBE_CONFIG_ID = "kubeconfig"
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
+      }
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Tarun-Kataruka/ThreeBroomSticksInn.git'
-            }
-        }
-
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh 'chmod +x ./deploy.sh && ./deploy.sh'
-            }
-        }
+    stage('Validate Code') {
+      steps {
+        sh 'pip install html5validator'
+        sh 'html5validator --root . --show-warnings'
+        sh 'npm install -g csslint'
+        sh 'csslint **/*.css || true'
+      }
     }
+
+    stage('Build Docker Image') {
+      steps {
+        script {
+          docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+        }
+      }
+    }
+
+    stage('Push Docker Image') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+          sh """
+            echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+            docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest
+            docker push ${IMAGE_NAME}:${IMAGE_TAG}
+            docker push ${IMAGE_NAME}:latest
+          """
+        }
+      }
+    }
+
+    stage('Deploy to Kubernetes') {
+      steps {
+        withCredentials([file(credentialsId: KUBE_CONFIG_ID, variable: 'KUBECONFIG')]) {
+          sh '''
+            kubectl apply -f k8s/deployment.yaml
+            kubectl apply -f k8s/service.yaml
+          '''
+        }
+      }
+    }
+  }
 }
