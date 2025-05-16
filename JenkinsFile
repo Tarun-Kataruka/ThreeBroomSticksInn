@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKERHUB_USERNAME = credentials('dockerhub-creds')
+        DOCKERHUB_TOKEN = credentials('dockerhub-creds')      
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/your-username/your-repo.git' // adjust repo URL
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'chmod +x ./deploy.sh && ./deploy.sh'
+            }
+        }
+    }
+}
