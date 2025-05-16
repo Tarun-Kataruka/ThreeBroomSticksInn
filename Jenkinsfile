@@ -6,6 +6,7 @@ pipeline {
     IMAGE_TAG = "${env.BUILD_ID}"
     DOCKER_CREDENTIALS_ID = "docker-creds"
     KUBE_CONFIG_ID = "kubeconfig"
+    PATH+EXTRA = "/opt/homebrew/bin"
   }
 
   stages {
@@ -16,16 +17,10 @@ pipeline {
     }
 
     stage('Validate Code') {
-      environment {
-        PATH = "/opt/homebrew/bin:$PATH"
-      }
       steps {
         sh '''#!/bin/bash
-          which pip3 || true
           pip3 install html5validator || true
           html5validator --root . --show-warnings || true
-
-          which npm || true
           npm install -g csslint || true
           find . -name '*.css' -exec csslint {} \\; || true
         '''
@@ -42,7 +37,7 @@ pipeline {
 
     stage('Push Docker Image') {
       steps {
-        withCredentials([usernamePassword(credentialsId: "${DOCKER_CREDENTIALS_ID}", usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+        withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
           sh '''#!/bin/bash
             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
             docker tag ${IMAGE_NAME}:${IMAGE_TAG} ${IMAGE_NAME}:latest
@@ -55,7 +50,7 @@ pipeline {
 
     stage('Deploy to Kubernetes') {
       steps {
-        withCredentials([file(credentialsId: "${KUBE_CONFIG_ID}", variable: 'KUBECONFIG')]) {
+        withCredentials([file(credentialsId: KUBE_CONFIG_ID, variable: 'KUBECONFIG')]) {
           sh '''#!/bin/bash
             kubectl apply -f k8s/deployment.yaml
             kubectl apply -f k8s/service.yaml
