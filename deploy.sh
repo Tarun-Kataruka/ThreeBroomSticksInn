@@ -21,7 +21,7 @@ echo "⬆️ Pushing Docker image to DockerHub..."
 docker push $IMAGE_NAME
 docker push $IMAGE_NAME:latest
 
-# echo "📦 Applying Kubernetes deployment..."
-# kubectl apply -f k8s/deployment.yaml
+echo "📦 Applying Kubernetes deployment..."
+kubectl apply -f k8s/deployment.yaml
 
 echo "✅ Deployment completed!"
