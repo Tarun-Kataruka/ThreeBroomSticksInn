@@ -3,17 +3,19 @@ pipeline {
 
   environment {
     IMAGE_NAME = "tarun2210/threebroomsticks-inn"
-    IMAGE_TAG = "${env.BUILD_ID}"  // Optional: You can also pass it via parameter
-    KUBE_CONFIG_ID = "kubeconfig"  // Jenkins credentials ID that holds your kubeconfig file
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+    IMAGE_TAG = "latest"  // Always deploy latest tag
+    KUBE_CONFIG_ID = "kubeconfig"  // Jenkins credentials ID for kubeconfig file
+    DOCKERHUB_CREDENTIALS = credentials('docker-creds')  // Jenkins Docker Hub credentials ID
   }
 
   stages {
     stage('Pull Latest Image') {
       steps {
         sh '''
+          echo "Logging into Docker Hub..."
           docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}
-          docker pull ${IMAGE_NAME}:latest
+          echo "Pulling Docker image: ${IMAGE_NAME}:${IMAGE_TAG}"
+          docker pull ${IMAGE_NAME}:${IMAGE_TAG}
         '''
       }
     }
@@ -24,14 +26,12 @@ pipeline {
           sh '''
             echo "Deploying image: ${IMAGE_NAME}:${IMAGE_TAG}"
 
-            # Update the image in the Kubernetes deployment
             kubectl set image deployment/threebroomsticks-deployment \
-              threebroomsticks-container=${IMAGE_NAME}:latest --record
+              threebroomsticks-container=${IMAGE_NAME}:${IMAGE_TAG} --record
 
-            # Check the rollout status
             kubectl rollout status deployment/threebroomsticks-deployment --timeout=300s
 
-            # Verify the deployment
+            echo "Listing pods with label app=threebroomsticks:"
             kubectl get pods -l app=threebroomsticks
           '''
         }
